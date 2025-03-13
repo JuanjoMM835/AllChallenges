@@ -1,0 +1,15 @@
+[submodule "Challenge1"]
+	path = Challenge1
+	url = https://github.com/JuanjoMM835/Challenge1.git
+[submodule "2Challenge"]
+	path = 2Challenge
+	url = https://github.com/JuanjoMM835/2Challenge.git
+[submodule "3Challenge"]
+	path = 3Challenge
+	url = https://github.com/JuanjoMM835/3Challenge.git
+[submodule "4Challenge"]
+	path = 4Challenge
+	url = https://github.com/JuanjoMM835/4Challenge.git
+[submodule "Challenge5"]
+	path = Challenge5
+	url = https://github.com/JuanjoMM835/Challenge5.git
