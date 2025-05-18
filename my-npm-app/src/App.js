@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './App.module.scss'; // Importa el módulo SASS
+import styles from './App.module.scss';
 import Stack from './Stack';
 
 function App() {
