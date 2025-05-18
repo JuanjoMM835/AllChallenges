@@ -1,19 +1,17 @@
-// App.js
 import React, { useState } from 'react';
-import './App.css';
+import styles from './App.module.scss'; // Importa el módulo SASS
 import Stack from './Stack';
 
 function App() {
   const [bookStack] = useState(new Stack());
   const [books, setBooks] = useState([]);
-  const [newBook, setNewBook] = useState({ // variables de estado para el nuevo libro con su respectiva estrucutura 
+  const [newBook, setNewBook] = useState({
     name: '',
     isbn: '',
     author: '',
     editorial: ''
   });
 
-  // se inicializa el mock data , tambien hago un arreglo de objetos para los libros iniciales 
   React.useEffect(() => {
     const initialBooks = [
       { name: 'Aventura', isbn: '123', author: 'PepitoJr', editorial: 'Scribner' },
@@ -21,8 +19,8 @@ function App() {
       { name: 'Estos challenges estan dificiles ', isbn: '456', author: 'Juan Jose ', editorial: 'Secker & Warburg' },
       { name: 'Ojala el parcial no este tan complejo  ', isbn: '2244', author: 'Goku  ', editorial: 'Secker & Warburg' }
     ];
-    
-    initialBooks.forEach(book => bookStack.push(book)); // recorro el arreglo con un foreach y en el stack pongo un nuevo libro  
+
+    initialBooks.forEach(book => bookStack.push(book));
     setBooks(bookStack.getAllBooks());
   }, [bookStack]);
 
@@ -56,14 +54,14 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>Pila de Libros </h1>
-      
-      <div className="container">
-        <div className="form-section">
+    <div className={styles.app}>
+      <h1>Pila de Libros</h1>
+
+      <div className={styles.container}>
+        <div className={styles['form-section']}>
           <h2>Add a New Book</h2>
           <form onSubmit={handleAddBook}>
-            <div className="form-group">
+            <div className={styles['form-group']}>
               <label>Name:</label>
               <input
                 type="text"
@@ -73,8 +71,8 @@ function App() {
                 required
               />
             </div>
-            
-            <div className="form-group">
+
+            <div className={styles['form-group']}>
               <label>ISBN:</label>
               <input
                 type="text"
@@ -84,8 +82,8 @@ function App() {
                 required
               />
             </div>
-            
-            <div className="form-group">
+
+            <div className={styles['form-group']}>
               <label>Author:</label>
               <input
                 type="text"
@@ -95,8 +93,8 @@ function App() {
                 required
               />
             </div>
-            
-            <div className="form-group">
+
+            <div className={styles['form-group']}>
               <label>Editorial:</label>
               <input
                 type="text"
@@ -106,30 +104,30 @@ function App() {
                 required
               />
             </div>
-            
+
             <button type="submit">Add Book</button>
           </form>
-          
-          <button onClick={handleRemoveBook} className="remove-btn">
+
+          <button onClick={handleRemoveBook} className={styles['remove-btn']}>
             Remove Top Book
           </button>
         </div>
-        
-        <div className="stack-section">
+
+        <div className={styles['stack-section']}>
           <h2>Book Stack ({bookStack.size()} books)</h2>
-          <div className="stack-container">
+          <div className={styles['stack-container']}>
             {books.length > 0 ? (
               books.map((book, index) => (
-                <div key={`${book.isbn}-${index}`} className="book-card">
+                <div key={`${book.isbn}-${index}`} className={styles['book-card']}>
                   <h3>{book.name}</h3>
                   <p><strong>ISBN:</strong> {book.isbn}</p>
                   <p><strong>Author:</strong> {book.author}</p>
                   <p><strong>Editorial:</strong> {book.editorial}</p>
-                  {index === 0 && <div className="top-label">TOP</div>}
+                  {index === 0 && <div className={styles['top-label']}>TOP</div>}
                 </div>
               ))
             ) : (
-              <p>El stack esta vacio </p>
+              <p>El stack esta vacio</p>
             )}
           </div>
         </div>
@@ -139,6 +137,3 @@ function App() {
 }
 
 export default App;
-
-// Lo hice todo en el main porque lo estaba haciendo en un archivo books.js para manejar mejor el orden pero jaja no me estaba funcionando 
-// asi que por eso lo hice todo junto 

@@ -1,0 +1,10 @@
+// Generar clases de background dinamicamente
+@each $name, $value in $colors {
+  .bg-#{$name} {
+    background-color: $value;
+  }
+
+  .text-#{$name} {
+    color: $value;
+  }
+}
